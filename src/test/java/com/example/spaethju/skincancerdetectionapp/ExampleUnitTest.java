@@ -1,4 +1,4 @@
-package al.omid.tfdroid;
+com.example.spaethju.skincancerdetectionapp;
 
 import org.junit.Test;
 

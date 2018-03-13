@@ -1,4 +1,4 @@
-package al.omid.tfdroid;
+package com.example.spaethju.skincancerdetectionapp;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
