@@ -1,5 +1,6 @@
 package com.example.speilo.skin_cancer_detection_app;
 
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -35,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // make foto
+                Intent myIntent = new Intent(MainActivity.this, CameraActivity.class);
+                MainActivity.this.startActivity(myIntent);
             }
         });
     }

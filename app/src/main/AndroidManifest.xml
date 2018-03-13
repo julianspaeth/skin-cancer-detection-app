@@ -2,6 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.speilo.skin_cancer_detection_app">
 
+
+    <uses-feature android:name="android.hardware.camera"
+        android:required="true" />
+    <!--<uses-permission android:name="android.permission.CAMERA" />-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -19,9 +27,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".CameraActivity"
+            android:label="@string/camera"
+            android:theme="@style/AppTheme.NoActionBar">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category" />-->
+            <!--</intent-filter>-->
+        </activity>
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.example.spaethju.fileprovider"
+            android:authorities="com.example.speilo.skin_cancer_detection_app.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -30,11 +48,6 @@
         </provider>
     </application>
 
-    <uses-feature android:name="android.hardware.camera"
-        android:required="true" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:maxSdkVersion="18" />
 
 
 </manifest>
