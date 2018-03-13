@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Skin cancer detection app</string>
+    <string name="action_settings">Settings</string>
+    <string name="title">Melanoma</string>
+    <string name="subtitle">Skin Cancer Detection</string>
+    <string name="background_content_description">Background</string>
+</resources>
