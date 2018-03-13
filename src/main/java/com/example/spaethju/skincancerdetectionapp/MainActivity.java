@@ -3,7 +3,7 @@ Created by Omid Alemi
 Feb 17, 2017
  */
 
-package al.omid.tfdroid;
+package com.example.spaethju.skincancerdetectionapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -37,12 +37,17 @@ public class MainActivity extends AppCompatActivity {
         inferenceInterface.initializeTensorFlow(getAssets(), MODEL_FILE);
 
 
-        final Button button = (Button) findViewById(R.id.button);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+            }
+        });
+    }
 
-                final EditText editNum1 = (EditText) findViewById(R.id.editNum1);
+    public void classify() {
+        final EditText editNum1 = (EditText) findViewById(R.id.editNum1);
                 final EditText editNum2 = (EditText) findViewById(R.id.editNum2);
                 final EditText editNum3 = (EditText) findViewById(R.id.editNum3);
 
@@ -61,12 +66,6 @@ public class MainActivity extends AppCompatActivity {
 
                 final TextView textViewR = (TextView) findViewById(R.id.txtViewResult);
                 textViewR.setText(Float.toString(resu[0]) + ", " + Float.toString(resu[1]));
-            }
-        });
-
     }
-
-
-
 
 }
