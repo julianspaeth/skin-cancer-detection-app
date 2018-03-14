@@ -32,7 +32,7 @@ public class ClassifierActivity extends Activity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.loading_classification);
+        setContentView(R.layout.activity_classification);
         this.bitmap = (Bitmap) getIntent().getExtras().get("data");
         preprocessedBitmap = preprocessImage(bitmap);
         System.out.println(preprocessedBitmap.getWidth());
