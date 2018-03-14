@@ -79,21 +79,21 @@ public class CameraActivity extends Activity {
         }
     }
 
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-//            Bundle extras = data.getExtras();
-//            Bitmap imageBitmap = (Bitmap) extras.get("data");
-////            Bitmap b = BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length)
-//
-//            Matrix matrix = new Matrix();
-//            matrix.postRotate(90);
-//            Bitmap imageBitmap_rotated = Bitmap.createBitmap(imageBitmap, 0, 0, imageBitmap.getWidth(), imageBitmap.getHeight(), matrix, true);
-//
-//            Bitmap imageBitmap_resized = Bitmap.createScaledBitmap(imageBitmap_rotated, 542, 718, false);
-//            galleryAddPic();
-//        }
-//    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+//            Bitmap b = BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length)
+
+            Matrix matrix = new Matrix();
+            matrix.postRotate(90);
+            Bitmap imageBitmap_rotated = Bitmap.createBitmap(imageBitmap, 0, 0, imageBitmap.getWidth(), imageBitmap.getHeight(), matrix, true);
+
+            Bitmap imageBitmap_resized = Bitmap.createScaledBitmap(imageBitmap_rotated, 542, 718, false);
+            galleryAddPic();
+        }
+    }
 
 //    @Override
 //    protected void onActivityResult(int requestCode, int resultcode, Intent intent) {
@@ -117,13 +117,13 @@ public class CameraActivity extends Activity {
 //        }
 //    }
 
-    protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
-        super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-//
-            galleryAddPic();
-        }
-    }
+//    protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
+//        super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
+//        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+////
+//            galleryAddPic();
+//        }
+//    }
     //    protected void onActivityResult(int requestCode, int resultCode, Intent imageReturnedIntent) {
 //        super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
 //
