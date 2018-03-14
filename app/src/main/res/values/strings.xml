@@ -5,4 +5,6 @@
     <string name="title">Melanoma</string>
     <string name="subtitle">Skin Cancer Detection</string>
     <string name="background_content_description">Background</string>
+    <string name="classifier">Classification</string>
+    <string name="classifying">Classifying...</string>
 </resources>

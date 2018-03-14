@@ -31,11 +31,11 @@
             android:name=".CameraActivity"
             android:label="@string/camera"
             android:theme="@style/AppTheme.NoActionBar">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
-
-                <!--<category android:name="android.intent.category" />-->
-            <!--</intent-filter>-->
+        </activity>
+        <activity
+            android:name=".ClassifierActivity"
+            android:label="@string/classifier"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <provider
             android:name="android.support.v4.content.FileProvider"

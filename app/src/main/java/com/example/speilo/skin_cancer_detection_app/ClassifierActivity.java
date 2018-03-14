@@ -1,7 +1,11 @@
 package com.example.speilo.skin_cancer_detection_app;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
 import android.media.Image;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 
 import org.tensorflow.contrib.android.TensorFlowInferenceInterface;
 
@@ -19,23 +23,29 @@ public class ClassifierActivity extends Activity{
     private static final String INPUT_NAME = "input";
     private static final String OUTPUT_NAME = "label";
     private static final int INPUT_SIZE = 299;
-    private TensorFlowInferenceInterface c = new TensorFlowInferenceInterface(getAssets(), MODEL_FILE);
-    private int numClasses = (int) c.graph().operation(OUTPUT_NAME).output(0).shape().size(1);
+   // private TensorFlowInferenceInterface c = new TensorFlowInferenceInterface(getAssets(), MODEL_FILE);
+  //  private int numClasses = (int) c.graph().operation(OUTPUT_NAME).output(0).shape().size(1);
 
-    private Image image, preprocessedImage;
+    private Bitmap bitmap, preprocessedBitmap;
 
 
-    public ClassifierActivity(Image image) {
-        this.image = image;
-        preprocessedImage = preprocessImage(image);
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.loading_classification);
+        this.bitmap = (Bitmap) getIntent().getExtras().get("data");
+        preprocessedBitmap = preprocessImage(bitmap);
+        System.out.println(preprocessedBitmap.getWidth());
+
     }
 
-    public Image preprocessImage(Image image) {
-        preprocessedImage = image;
 
-        //Preprocess steps as in skin cancer detection python
-
-        return preprocessedImage;
+    public Bitmap preprocessImage(Bitmap imageBitmap) {
+        Matrix matrix = new Matrix();
+        matrix.postRotate(90);
+        Bitmap imageBitmap_rotated = Bitmap.createBitmap(imageBitmap, 0, 0, imageBitmap.getWidth(), imageBitmap.getHeight(), matrix, true);
+        Bitmap imageBitmap_resized = Bitmap.createScaledBitmap(imageBitmap_rotated, 542, 718, false);
+        return imageBitmap_resized;
     }
 
 

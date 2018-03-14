@@ -25,10 +25,11 @@ import java.util.Date;
  */
 
 public class CameraActivity extends Activity {
-    String mCurrentPhotoPath;
-    static final int REQUEST_IMAGE_CAPTURE = 1;
-//    private CameraActivity() {
-//    }
+    private String mCurrentPhotoPath;
+    private static final int REQUEST_IMAGE_CAPTURE = 1;
+    private static final int REQUEST_TAKE_PHOTO = 1;
+    private File photoFile;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,7 +54,7 @@ public class CameraActivity extends Activity {
         return image;
     }
 
-    static final int REQUEST_TAKE_PHOTO = 1;
+
 
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -69,31 +70,31 @@ public class CameraActivity extends Activity {
             }
             // Continue only if the File was successfully created
             if (photoFile != null) {
-                Uri photoURI = FileProvider.getUriForFile(this,
-                        "com.example.speilo.skin_cancer_detection_app.fileprovider",
-                        photoFile);
-                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-                startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
-
+                Intent cameraIntent=new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(cameraIntent, REQUEST_TAKE_PHOTO);
             }
+
         }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
-//            Bitmap b = BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length)
-
-            Matrix matrix = new Matrix();
-            matrix.postRotate(90);
-            Bitmap imageBitmap_rotated = Bitmap.createBitmap(imageBitmap, 0, 0, imageBitmap.getWidth(), imageBitmap.getHeight(), matrix, true);
-
-            Bitmap imageBitmap_resized = Bitmap.createScaledBitmap(imageBitmap_rotated, 542, 718, false);
-            galleryAddPic();
+            Bitmap bitmap = (Bitmap) extras.get("data");
+            System.out.println("Width: " + bitmap.getWidth());
+            Intent myIntent = new Intent(this, ClassifierActivity.class);
+            myIntent.putExtras(extras); //Put your id to your next Intent
+            finish();
+            this.startActivity(myIntent);
         }
     }
+
+    //Matrix matrix = new Matrix();
+    //matrix.postRotate(90);
+    //Bitmap imageBitmap_rotated = Bitmap.createBitmap(imageBitmap, 0, 0, imageBitmap.getWidth(), imageBitmap.getHeight(), matrix, true);
+    //Bitmap imageBitmap_resized = Bitmap.createScaledBitmap(imageBitmap_rotated, 542, 718, false);
 
 //    @Override
 //    protected void onActivityResult(int requestCode, int resultcode, Intent intent) {
