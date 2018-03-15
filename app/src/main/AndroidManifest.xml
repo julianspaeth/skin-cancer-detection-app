@@ -37,6 +37,11 @@
             android:label="@string/classifier"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity
+            android:name=".ResultsActivity"
+            android:label="@string/results"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.example.speilo.skin_cancer_detection_app.fileprovider"

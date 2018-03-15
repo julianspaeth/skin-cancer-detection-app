@@ -7,4 +7,7 @@
     <string name="background_content_description">Background</string>
     <string name="classifier">Classification</string>
     <string name="classifying">Classifying...</string>
+    <string name="results">Results</string>
+    <string name="results_pos">Possible skin cancer detected. You should ask your doctor for a more accurate examination.</string>
+    <string name="results_prob">Probability: 83%</string>
 </resources>
