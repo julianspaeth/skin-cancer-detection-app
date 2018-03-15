@@ -1,8 +1,6 @@
 package com.example.speilo.skin_cancer_detection_app;
 
 import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
@@ -10,7 +8,7 @@ import android.support.annotation.Nullable;
  * Created by spaethju on 13.03.18.
  */
 
-public class ResultsActivity extends Activity{
+public class ResultsActivity extends Activity {
 
 
     @Override

@@ -3,10 +3,12 @@
     package="com.example.speilo.skin_cancer_detection_app">
 
 
-    <uses-feature android:name="android.hardware.camera"
+    <uses-feature
+        android:name="android.hardware.camera"
         android:required="true" />
     <!--<uses-permission android:name="android.permission.CAMERA" />-->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="18" />
 
 
@@ -30,18 +32,16 @@
         <activity
             android:name=".CameraActivity"
             android:label="@string/camera"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".ClassifierActivity"
             android:label="@string/classifier"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".ResultsActivity"
             android:label="@string/results"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.example.speilo.skin_cancer_detection_app.fileprovider"
@@ -52,7 +52,6 @@
                 android:resource="@xml/file_paths"></meta-data>
         </provider>
     </application>
-
 
 
 </manifest>

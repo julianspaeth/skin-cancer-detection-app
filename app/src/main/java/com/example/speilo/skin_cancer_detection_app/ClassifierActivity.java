@@ -13,23 +13,23 @@ import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
+
 import org.tensorflow.contrib.android.TensorFlowInferenceInterface;
-
-
 
 
 /**
  * Created by spaethju on 13.03.18.
  */
 
-public class ClassifierActivity extends Activity{
+public class ClassifierActivity extends Activity {
+    private static final String MODEL_FILE = "file:///android_asset/frozen_model_opt.pb";
+    private static final String INPUT_NAME = "input";
+    private static final String OUTPUT_NAME = "InceptionV3/Predictions/Reshape_1";
+
     static {
         System.loadLibrary("tensorflow_inference");
     }
 
-    private static final String MODEL_FILE = "file:///android_asset/frozen_model_opt.pb";
-    private static final String INPUT_NAME = "input";
-    private static final String OUTPUT_NAME = "InceptionV3/Predictions/Reshape_1";
     private TensorFlowInferenceInterface inferenceInterface;
     private Bitmap bitmap, preprocessedBitmap;
 
@@ -52,7 +52,7 @@ public class ClassifierActivity extends Activity{
         inferenceInterface.feed(INPUT_NAME, rgb, rgb.length);
         System.out.println(inferenceInterface.getStatString().toString());
 
-        String[] outputNames = new String[] {OUTPUT_NAME};
+        String[] outputNames = new String[]{OUTPUT_NAME};
         // Run the inference call.
         inferenceInterface.run(outputNames);
 
@@ -71,8 +71,7 @@ public class ClassifierActivity extends Activity{
         this.startActivity(myIntent);
     }
 
-    private float[] rgbValuesFromBitmap(Bitmap bitmap)
-    {
+    private float[] rgbValuesFromBitmap(Bitmap bitmap) {
         ColorMatrix colorMatrix = new ColorMatrix();
         ColorFilter colorFilter = new ColorMatrixColorFilter(
                 colorMatrix);

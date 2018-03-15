@@ -1,13 +1,11 @@
 package com.example.speilo.skin_cancer_detection_app;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Button;
 import android.view.View;
+
 import org.tensorflow.contrib.android.TensorFlowInferenceInterface;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,13 +14,13 @@ public class MainActivity extends AppCompatActivity {
     private static final String INPUT_NODE = "I";
     private static final String OUTPUT_NODE = "O";
 
-    private static final int[] INPUT_SIZE = {1,3};
-
-    private TensorFlowInferenceInterface inferenceInterface;
+    private static final int[] INPUT_SIZE = {1, 3};
 
     static {
         System.loadLibrary("tensorflow_inference");
     }
+
+    private TensorFlowInferenceInterface inferenceInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,13 +53,13 @@ public class MainActivity extends AppCompatActivity {
 
         //inferenceInterface.feed(INPUT_NODE, INPUT_SIZE, inputFloats);
 
-        inferenceInterface.run(new String[] {OUTPUT_NODE});
+        inferenceInterface.run(new String[]{OUTPUT_NODE});
 
         float[] resu = {0, 0};
         inferenceInterface.fetch(OUTPUT_NODE, resu);
 
         //final TextView textViewR = (TextView) findViewById(R.id.txtViewResult);
-       // textViewR.setText(Float.toString(resu[0]) + ", " + Float.toString(resu[1]));
+        // textViewR.setText(Float.toString(resu[0]) + ", " + Float.toString(resu[1]));
     }
 
 }
