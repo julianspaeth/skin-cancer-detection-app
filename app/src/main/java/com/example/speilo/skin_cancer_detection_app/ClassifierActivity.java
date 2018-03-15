@@ -41,6 +41,7 @@ public class ClassifierActivity extends Activity{
         this.bitmap = (Bitmap) getIntent().getExtras().get("data");
         preprocessedBitmap = preprocessImage(bitmap);
         float[] rgb = rgbValuesFromBitmap(preprocessedBitmap);
+        System.out.println(rgb.length);
         classify(rgb);
     }
 
@@ -49,9 +50,11 @@ public class ClassifierActivity extends Activity{
         int numClasses = (int) inferenceInterface.graph().operation(OUTPUT_NAME).output(0).shape().size(1);
         float[] outputs = new float[numClasses];
         inferenceInterface.feed(INPUT_NAME, rgb, rgb.length);
+        System.out.println(inferenceInterface.getStatString().toString());
 
+        String[] outputNames = new String[] {OUTPUT_NAME};
         // Run the inference call.
-        inferenceInterface.run(new String[] {OUTPUT_NAME});
+        inferenceInterface.run(outputNames);
 
         // Copy the output Tensor back into the output array.
         inferenceInterface.fetch(OUTPUT_NAME, outputs);
